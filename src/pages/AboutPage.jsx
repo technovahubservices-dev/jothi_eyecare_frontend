@@ -1,10 +1,15 @@
+import InnerPageBanner from "../components/InnerPageBanner";
+import aboutBanner from "../assets/images/facility-reception.jpg";
+
 export default function AboutPage() {
   return (
     <section className="inner-page section-spacing-lg">
       <div className="container-xl">
-        <div className="inner-hero reveal">
+        <InnerPageBanner title="ABOUT US" current="About" image={aboutBanner} />
+
+        <div className="inner-hero reveal mt-4">
           <p className="eyebrow">About Jothi Eye Care</p>
-          <h1 className="section-title">Comprehensive Eye Care With Compassion</h1>
+          <h2 className="section-title">Comprehensive Eye Care With Compassion</h2>
           <p className="section-subtitle">
             Jothi Eye Care Centre in Puducherry is built on a simple promise: provide ethical, accessible,
             and high-quality ophthalmology services with human warmth and long-term patient trust.

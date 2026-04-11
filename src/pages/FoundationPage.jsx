@@ -1,3 +1,6 @@
+import InnerPageBanner from "../components/InnerPageBanner";
+import foundationBanner from "../assets/images/Premier Eye Care.jpg";
+
 const programs = [
   {
     title: "Eye Camps",
@@ -32,9 +35,11 @@ export default function FoundationPage() {
   return (
     <section className="inner-page section-spacing-lg">
       <div className="container-xl">
-        <div className="inner-hero reveal">
+        <InnerPageBanner title="FOUNDATION" current="Foundation" image={foundationBanner} />
+
+        <div className="inner-hero reveal mt-4">
           <p className="eyebrow">Community Foundation</p>
-          <h1 className="section-title">Outreach & Public Vision Programs</h1>
+          <h2 className="section-title">Outreach & Public Vision Programs</h2>
           <p className="section-subtitle">
             Inspired by Jothi Eye Care Foundation activities, these initiatives focus on preventive eye care,
             awareness, and access for underserved communities.

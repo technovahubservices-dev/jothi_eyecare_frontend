@@ -1,5 +1,7 @@
 import ServicesSection from "../components/ServicesSection";
 import CalculatorSection from "../components/CalculatorSection";
+import InnerPageBanner from "../components/InnerPageBanner";
+import servicesBanner from "../assets/images/facility-theatre.jpg";
 
 const serviceHighlights = [
   {
@@ -32,9 +34,11 @@ export default function ServicesPage() {
   return (
     <section className="inner-page section-spacing-lg">
       <div className="container-xl">
-        <div className="inner-hero reveal">
+        <InnerPageBanner title="SERVICES" current="Services" image={servicesBanner} />
+
+        <div className="inner-hero reveal mt-4">
           <p className="eyebrow">Clinical Services</p>
-          <h1 className="section-title">Advanced Ophthalmology Specialities</h1>
+          <h2 className="section-title">Advanced Ophthalmology Specialities</h2>
           <p className="section-subtitle">
             Cataract, LASIK, Retina, Cornea, Glaucoma, Pediatric Ophthalmology, and comprehensive diagnostics
             under one roof with patient-first treatment planning.

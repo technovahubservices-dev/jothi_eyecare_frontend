@@ -964,6 +964,16 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
+.contact-map-frame iframe {
+  display: block;
+  width: 100%;
+  min-height: 600px;
+}
+
+.contact-map-frame-large {
+  min-height: 600px;
+}
+
 .contact-map-caption {
   color: rgba(255, 255, 255, 0.94);
   font-size: 0.88rem;
@@ -984,6 +994,14 @@ body {
 
   .contact-social-row {
     grid-column: 1 / -1;
+  }
+
+  .contact-map-frame-large {
+    min-height: 520px;
+  }
+
+  .contact-map-frame iframe {
+    min-height: 520px;
   }
 }
 
@@ -1013,5 +1031,13 @@ body {
 
   .contact-detail-block h3 {
     font-size: 1.65rem;
+  }
+
+  .contact-map-frame-large {
+    min-height: 420px;
+  }
+
+  .contact-map-frame iframe {
+    min-height: 420px;
   }
 }

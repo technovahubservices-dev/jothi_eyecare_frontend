@@ -6,6 +6,7 @@ export default defineConfig(({ mode }) => {
   const apiBaseUrl = (env.VITE_API_BASE_URL || 'http://localhost:4000').replace(/\/$/, '')
 
   return {
+    base: '/jothi_eyecare/test/',
     plugins: [react()],
     server: {
       proxy: {

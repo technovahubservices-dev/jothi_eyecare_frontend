@@ -997,14 +997,47 @@ body {
 }
 
 @media (max-width: 767.98px) {
+  #home,
+  #offers,
+  #services,
+  #calculator,
+  #contact {
+    scroll-margin-top: 110px;
+  }
+  .site-header .container-xl {
+    padding-top: 0.55rem !important;
+    padding-bottom: 0.55rem !important;
+  }
   .hero-section { padding: 2.25rem 0 0.75rem; }
   .brand-logo-img {
-    height: 34px;
-    max-width: 220px;
+    height: 30px;
+    max-width: 170px;
+  }
+  .btn-primary-pill {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.78rem;
+  }
+  .sticky-offer-bar {
+    position: static;
+    padding: 0.35rem 0;
+  }
+  .sticky-offer-bar .container-xl {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 0.35rem !important;
   }
   .hero-bg-image {
     background-size: cover;
     background-position: center top;
+  }
+  .sticky-offer-text {
+    width: 100%;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .sticky-offer-btn {
+    font-size: 0.63rem;
+    padding: 0.22rem 0.5rem;
   }
   .hero-subtitle { max-width: 100%; }
   .hero-image-wrap {
@@ -1013,17 +1046,7 @@ body {
   }
   .main-content {
     padding-top: 74px;
-    padding-bottom: 96px;
-  }
-  .sticky-offer-bar {
-    top: 74px;
-  }
-  .sticky-offer-text {
-    font-size: 0.72rem;
-  }
-  .sticky-offer-btn {
-    font-size: 0.66rem;
-    padding: 0.25rem 0.5rem;
+    padding-bottom: 152px;
   }
   .mini-lead-form {
     max-width: 100%;
@@ -1043,10 +1066,17 @@ body {
     flex-direction: column;
     align-items: flex-start !important;
     gap: 0.45rem;
+    padding-left: 0.6rem;
   }
   .offer-card {
     border-radius: 1rem;
     padding: 1rem;
+  }
+  .feature-card {
+    padding: 0.85rem 0.75rem;
+    border: 1px solid rgba(16, 52, 138, 0.08);
+    border-radius: 1rem;
+    background: #fff;
   }
   .offer-card h3 {
     font-size: 1rem;
@@ -1088,10 +1118,16 @@ body {
     font-size: 0.95rem;
   }
   .fixed-cta-btn {
-    bottom: 5.6rem;
-    right: 0.85rem;
+    left: 50%;
+    right: auto;
+    bottom: calc(4.95rem + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
     font-size: 0.8rem;
-    padding: 0.62rem 0.9rem;
+    padding: 0.62rem 0.95rem;
+    white-space: nowrap;
+  }
+  .fixed-cta-btn:hover {
+    transform: translateX(-50%) translateY(-2px);
   }
 }
 
@@ -1101,6 +1137,19 @@ body {
   }
   .specialty-line {
     width: 74px;
+  }
+  .mobile-nav {
+    padding: 0.42rem 0.45rem calc(0.9rem + env(safe-area-inset-bottom));
+  }
+  .mobile-nav a {
+    padding: 0.3rem 0.5rem;
+  }
+  .mobile-nav small {
+    font-size: 0.56rem;
+  }
+  .service-offer-badge {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
   }
 }
 

@@ -8,6 +8,19 @@ import HomePage from "./pages/HomePage";
 export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const apiBase = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    fetch(`${apiBase}/health`, { signal: controller.signal }).catch(() => {
+      // Warm-up request: failure should never block UI.
+    }).finally(() => clearTimeout(timeoutId));
+
+    return () => {
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
   }, []);
 
   useEffect(() => {

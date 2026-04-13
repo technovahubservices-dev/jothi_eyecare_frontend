@@ -1,6 +1,32 @@
 import { useEffect, useMemo, useState } from "react";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+const REQUEST_TIMEOUT_MS = 10000;
+
+const fetchWithTimeout = async (url, options = {}) => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+};
+
+const withRetry = async (requestFn, retries = 1, retryDelayMs = 700) => {
+  let lastError;
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      return await requestFn();
+    } catch (error) {
+      lastError = error;
+      if (attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
+      }
+    }
+  }
+  throw lastError;
+};
 
 const formatINR = (amount) =>
   new Intl.NumberFormat("en-IN", {
@@ -20,7 +46,7 @@ export default function CalculatorSection() {
   useEffect(() => {
     const loadProcedures = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/procedures`);
+        const res = await withRetry(() => fetchWithTimeout(`${API_BASE}/api/procedures`));
         if (!res.ok) throw new Error("Failed to load procedures");
         const data = await res.json();
         const list = data?.procedures ?? [];
@@ -45,11 +71,11 @@ export default function CalculatorSection() {
     setError("");
 
     try {
-      const res = await fetch(`${API_BASE}/api/calculate`, {
+      const res = await withRetry(() => fetchWithTimeout(`${API_BASE}/api/calculate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ procedureId: selectedProcedureId, roomType })
-      });
+      }));
 
       if (!res.ok) throw new Error("Failed to calculate");
       const data = await res.json();
